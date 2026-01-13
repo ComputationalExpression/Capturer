@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[project]
+name = "Capturer"
+version = "0.0.1"
+authors = [
+    {name = "Douglas Luman", email = "dluman@allegheny.edu"}
+]
+readme = "README.md"
+description = "It's like the Ghostbusters thing, but also not."
+
+[project.scripts]
+capture = "capturer:main.main"
