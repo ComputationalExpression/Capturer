@@ -30,7 +30,11 @@ def verify_checksum(data: bytes):
 def main(cwd: str = os.getcwd()):
     """ Functionality that makes the capture """
     try:
-        file = sys.argv[-2]
+        file = sys.argv[-1]
+        if len(sys.argv) == 1:
+            raise ValueError
+        if not Path(file).is_file():
+            raise FileNotFoundError
         with open(file, "rb") as fh:
             data = fh.read()
         if not data:
@@ -43,7 +47,7 @@ def main(cwd: str = os.getcwd()):
         """)
         sys.exit(1)
     except FileNotFoundError:
-        print(f"Looks like there's nothing {file} that around here!")
+        print(f"Looks like there's nothing like {file} around here!")
         sys.exit(1)
     except IsADirectoryError:
         print(f"{file} is a folder!")
