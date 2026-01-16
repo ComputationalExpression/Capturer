@@ -13,3 +13,4 @@ description = "It's like the Ghostbusters thing, but also not."
 
 [project.scripts]
 capture = "capturer:main.main"
+detect = "detect:main.main"
