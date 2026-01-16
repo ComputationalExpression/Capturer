@@ -33,6 +33,8 @@ def main(cwd: str = os.getcwd()):
         file = sys.argv[-1]
         if len(sys.argv) == 1:
             raise ValueError
+        if Path(file).is_dir():
+            raise IsADirectoryError
         if not Path(file).is_file():
             raise FileNotFoundError
         with open(file, "rb") as fh:
@@ -46,11 +48,11 @@ def main(cwd: str = os.getcwd()):
             usage: capture {file_name}
         """)
         sys.exit(1)
+    except IsADirectoryError:
+        print(f"{file} is a folder! Unfortunately, we can't capture folders!")
+        sys.exit(1)
     except FileNotFoundError:
         print(f"Looks like there's nothing like {file} around here!")
-        sys.exit(1)
-    except IsADirectoryError:
-        print(f"{file} is a folder!")
         sys.exit(1)
     if verify_checksum(data):
         copy_python(cwd, "cage", "maltese-python.png")
