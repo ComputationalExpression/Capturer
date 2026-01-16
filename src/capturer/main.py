@@ -11,7 +11,7 @@ def copy_python(cwd: str = "", loc: str = "", obj: str = ""):
     """ Moves python to the correct location """
     path = Path(cwd).resolve()
     while True:
-        if Path(f"{path}/gatorgrade.yml").is_file():
+        if Path(f"{path}/.gatorgrade.yml").is_file():
             shutil.copy(f"{cwd}/{obj}", f"{path}/{loc}/{obj}")
             break
         path = Path(path).resolve().parent
@@ -22,7 +22,8 @@ def verify_checksum(data: bytes):
         file found and correct file match
     """
     buffer_size = 65536
-    python_crc = 323477915
+    python_crc = 3955143656
+    print(zlib.crc32(data, buffer_size), python_crc)
     return python_crc == zlib.crc32(data, buffer_size)
 
 def main(cwd: str = os.getcwd()):
