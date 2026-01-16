@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta:__legacy__"
 
 [project]
 name = "Capturer"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
     {name = "Douglas Luman", email = "dluman@allegheny.edu"}
 ]
