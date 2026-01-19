@@ -24,7 +24,7 @@ def verify_checksum(data: bytes):
         Verifies that the checksums between
         file found and correct file match
     """
-    python_hash = "615bef0c2069416a6c88d28e77faf476"
+    python_hash = "c62f59c284da2e627b74338eb1ce932c"
     return python_hash == hashlib.md5(data).hexdigest()
 
 def main(cwd: str = os.getcwd()):
